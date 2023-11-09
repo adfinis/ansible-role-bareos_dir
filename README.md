@@ -4,11 +4,11 @@ Install and configure [Bareos](https://www.bareos.com/) Director.
 
 |GitHub|GitLab|Downloads|Version|
 |------|------|---------|-------|
-|[![github](https://github.com/robertdebock/ansible-role-bareos_dir/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-bareos_dir/actions)|[![gitlab](https://gitlab.com/robertdebock-iac/ansible-role-bareos_dir/badges/master/pipeline.svg)](https://gitlab.com/robertdebock-iac/ansible-role-bareos_dir)|[![downloads](https://img.shields.io/ansible/role/d/32423)](https://galaxy.ansible.com/robertdebock/bareos_dir)|[![Version](https://img.shields.io/github/release/robertdebock/ansible-role-bareos_dir.svg)](https://github.com/robertdebock/ansible-role-bareos_dir/releases/)|
+|[![github](https://github.com/adfinis/ansible-role-bareos_dir/workflows/Ansible%20Molecule/badge.svg)](https://github.com/adfinis/ansible-role-bareos_dir/actions)|[![gitlab](https://gitlab.com/robertdebock-iac/ansible-role-bareos_dir/badges/master/pipeline.svg)](https://gitlab.com/robertdebock-iac/ansible-role-bareos_dir)|[![downloads](https://img.shields.io/ansible/role/d/)](https://galaxy.ansible.com/adfinis/bareos_dir)|[![Version](https://img.shields.io/github/release/adfinis/ansible-role-bareos_dir.svg)](https://github.com/adfinis/ansible-role-bareos_dir/releases/)|
 
 ## [Example Playbook](#example-playbook)
 
-This example is taken from [`molecule/default/converge.yml`](https://github.com/robertdebock/ansible-role-bareos_dir/blob/master/molecule/default/converge.yml) and is tested on each push, pull request and release.
+This example is taken from [`molecule/default/converge.yml`](https://github.com/adfinis/ansible-role-bareos_dir/blob/master/molecule/default/converge.yml) and is tested on each push, pull request and release.
 
 ```yaml
 ---
@@ -18,7 +18,7 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
   gather_facts: yes
 
   roles:
-    - role: robertdebock.bareos_dir
+    - role: adfinis.bareos_dir
       bareos_dir_backup_configurations: yes
       bareos_dir_install_debug_packages: yes
       bareos_dir_catalogs:
@@ -236,7 +236,7 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
           enabled: no
 ```
 
-The machine needs to be prepared. In CI this is done using [`molecule/default/prepare.yml`](https://github.com/robertdebock/ansible-role-bareos_dir/blob/master/molecule/default/prepare.yml):
+The machine needs to be prepared. In CI this is done using [`molecule/default/prepare.yml`](https://github.com/adfinis/ansible-role-bareos_dir/blob/master/molecule/default/prepare.yml):
 
 ```yaml
 ---
@@ -262,11 +262,11 @@ The machine needs to be prepared. In CI this is done using [`molecule/default/pr
       bareos_repository_enable_tracebacks: yes
 ```
 
-Also see a [full explanation and example](https://robertdebock.nl/how-to-use-these-roles.html) on how to use these roles.
+These roles are provided as is, without warranty of any kind. Use it at your own risk.
 
 ## [Role Variables](#role-variables)
 
-The default values for the variables are set in [`defaults/main.yml`](https://github.com/robertdebock/ansible-role-bareos_dir/blob/master/defaults/main.yml):
+The default values for the variables are set in [`defaults/main.yml`](https://github.com/adfinis/ansible-role-bareos_dir/blob/master/defaults/main.yml):
 
 ```yaml
 ---
@@ -337,7 +337,7 @@ bareos_dir_storages: []
 
 ## [Requirements](#requirements)
 
-- pip packages listed in [requirements.txt](https://github.com/robertdebock/ansible-role-bareos_dir/blob/master/requirements.txt).
+- pip packages listed in [requirements.txt](https://github.com/adfinis/ansible-role-bareos_dir/blob/master/requirements.txt).
 
 ## [State of used roles](#state-of-used-roles)
 
@@ -345,19 +345,19 @@ The following roles are used to prepare a system. You can prepare your system in
 
 | Requirement | GitHub | GitLab |
 |-------------|--------|--------|
-|[robertdebock.bootstrap](https://galaxy.ansible.com/robertdebock/bootstrap)|[![Build Status GitHub](https://github.com/robertdebock/ansible-role-bootstrap/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-bootstrap/actions)|[![Build Status GitLab](https://gitlab.com/robertdebock-iac/ansible-role-bootstrap/badges/master/pipeline.svg)](https://gitlab.com/robertdebock-iac/ansible-role-bootstrap)|
-|[robertdebock.bareos_repository](https://galaxy.ansible.com/robertdebock/bareos_repository)|[![Build Status GitHub](https://github.com/robertdebock/ansible-role-bareos_repository/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-bareos_repository/actions)|[![Build Status GitLab](https://gitlab.com/robertdebock-iac/ansible-role-bareos_repository/badges/master/pipeline.svg)](https://gitlab.com/robertdebock-iac/ansible-role-bareos_repository)|
-|[robertdebock.buildtools](https://galaxy.ansible.com/robertdebock/buildtools)|[![Build Status GitHub](https://github.com/robertdebock/ansible-role-buildtools/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-buildtools/actions)|[![Build Status GitLab](https://gitlab.com/robertdebock-iac/ansible-role-buildtools/badges/master/pipeline.svg)](https://gitlab.com/robertdebock-iac/ansible-role-buildtools)|
-|[robertdebock.epel](https://galaxy.ansible.com/robertdebock/epel)|[![Build Status GitHub](https://github.com/robertdebock/ansible-role-epel/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-epel/actions)|[![Build Status GitLab](https://gitlab.com/robertdebock-iac/ansible-role-epel/badges/master/pipeline.svg)](https://gitlab.com/robertdebock-iac/ansible-role-epel)|
-|[robertdebock.python_pip](https://galaxy.ansible.com/robertdebock/python_pip)|[![Build Status GitHub](https://github.com/robertdebock/ansible-role-python_pip/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-python_pip/actions)|[![Build Status GitLab](https://gitlab.com/robertdebock-iac/ansible-role-python_pip/badges/master/pipeline.svg)](https://gitlab.com/robertdebock-iac/ansible-role-python_pip)|
-|[robertdebock.postgres](https://galaxy.ansible.com/robertdebock/postgres)|[![Build Status GitHub](https://github.com/robertdebock/ansible-role-postgres/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-postgres/actions)|[![Build Status GitLab](https://gitlab.com/robertdebock-iac/ansible-role-postgres/badges/master/pipeline.svg)](https://gitlab.com/robertdebock-iac/ansible-role-postgres)|
+|[robertdebock.bootstrap](https://galaxy.ansible.com/adfinis/robertdebock.bootstrap)|[![Build Status GitHub](https://github.com/adfinis/robertdebock.bootstrap/workflows/Ansible%20Molecule/badge.svg)](https://github.com/adfinis/robertdebock.bootstrap/actions)|[![Build Status GitLab](https://gitlab.com/robertdebock-iac/robertdebock.bootstrap/badges/master/pipeline.svg)](https://gitlab.com/robertdebock-iac/robertdebock.bootstrap)|
+|[robertdebock.bareos_repository](https://galaxy.ansible.com/adfinis/robertdebock.bareos_repository)|[![Build Status GitHub](https://github.com/adfinis/robertdebock.bareos_repository/workflows/Ansible%20Molecule/badge.svg)](https://github.com/adfinis/robertdebock.bareos_repository/actions)|[![Build Status GitLab](https://gitlab.com/robertdebock-iac/robertdebock.bareos_repository/badges/master/pipeline.svg)](https://gitlab.com/robertdebock-iac/robertdebock.bareos_repository)|
+|[robertdebock.buildtools](https://galaxy.ansible.com/adfinis/robertdebock.buildtools)|[![Build Status GitHub](https://github.com/adfinis/robertdebock.buildtools/workflows/Ansible%20Molecule/badge.svg)](https://github.com/adfinis/robertdebock.buildtools/actions)|[![Build Status GitLab](https://gitlab.com/robertdebock-iac/robertdebock.buildtools/badges/master/pipeline.svg)](https://gitlab.com/robertdebock-iac/robertdebock.buildtools)|
+|[robertdebock.epel](https://galaxy.ansible.com/adfinis/robertdebock.epel)|[![Build Status GitHub](https://github.com/adfinis/robertdebock.epel/workflows/Ansible%20Molecule/badge.svg)](https://github.com/adfinis/robertdebock.epel/actions)|[![Build Status GitLab](https://gitlab.com/robertdebock-iac/robertdebock.epel/badges/master/pipeline.svg)](https://gitlab.com/robertdebock-iac/robertdebock.epel)|
+|[robertdebock.python_pip](https://galaxy.ansible.com/adfinis/robertdebock.python_pip)|[![Build Status GitHub](https://github.com/adfinis/robertdebock.python_pip/workflows/Ansible%20Molecule/badge.svg)](https://github.com/adfinis/robertdebock.python_pip/actions)|[![Build Status GitLab](https://gitlab.com/robertdebock-iac/robertdebock.python_pip/badges/master/pipeline.svg)](https://gitlab.com/robertdebock-iac/robertdebock.python_pip)|
+|[robertdebock.postgres](https://galaxy.ansible.com/adfinis/robertdebock.postgres)|[![Build Status GitHub](https://github.com/adfinis/robertdebock.postgres/workflows/Ansible%20Molecule/badge.svg)](https://github.com/adfinis/robertdebock.postgres/actions)|[![Build Status GitLab](https://gitlab.com/robertdebock-iac/robertdebock.postgres/badges/master/pipeline.svg)](https://gitlab.com/robertdebock-iac/robertdebock.postgres)|
 
 ## [Context](#context)
 
-This role is a part of many compatible roles. Have a look at [the documentation of these roles](https://robertdebock.nl/) for further information.
+This role is a part of many compatible roles. Have a look at [the documentation of these roles](https://adfinis.com/) for further information.
 
 Here is an overview of related roles:
-![dependencies](https://raw.githubusercontent.com/robertdebock/ansible-role-bareos_dir/png/requirements.png "Dependencies")
+![dependencies](https://raw.githubusercontent.com/adfinis/ansible-role-bareos_dir/png/requirements.png "Dependencies")
 
 ## [Compatibility](#compatibility)
 
@@ -365,11 +365,11 @@ This role has been tested on these [container images](https://hub.docker.com/u/r
 
 |container|tags|
 |---------|----|
-|[Debian](https://hub.docker.com/repository/docker/robertdebock/debian/general)|bookworm, bullseye, buster|
-|[EL](https://hub.docker.com/repository/docker/robertdebock/enterpriselinux/general)|7, 8, 9|
-|[Fedora](https://hub.docker.com/repository/docker/robertdebock/fedora/general)|37, 38|
-|[opensuse](https://hub.docker.com/repository/docker/robertdebock/opensuse/general)|all|
-|[Ubuntu](https://hub.docker.com/repository/docker/robertdebock/ubuntu/general)|jammy, focal|
+|[Debian](https://hub.docker.com/r/robertdebock/debian)|bookworm, bullseye, buster|
+|[EL](https://hub.docker.com/r/robertdebock/enterpriselinux)|7, 8, 9|
+|[Fedora](https://hub.docker.com/r/robertdebock/fedora/)|37, 38|
+|[opensuse](https://hub.docker.com/r/robertdebock/opensuse)|all|
+|[Ubuntu](https://hub.docker.com/r/robertdebock/ubuntu)|jammy, focal|
 
 The minimum version of Ansible required is 2.12, tests have been done to:
 
@@ -377,14 +377,13 @@ The minimum version of Ansible required is 2.12, tests have been done to:
 - The current version.
 - The development version.
 
-If you find issues, please register them in [GitHub](https://github.com/robertdebock/ansible-role-bareos_dir/issues).
+If you find issues, please register them in [GitHub](https://github.com/adfinis/ansible-role-bareos_dir/issues).
 
 ## [License](#license)
 
-[Apache-2.0](https://github.com/robertdebock/ansible-role-bareos_dir/blob/master/LICENSE).
+[Apache-2.0](https://github.com/adfinis/ansible-role-bareos_dir/blob/master/LICENSE).
 
 ## [Author Information](#author-information)
 
-[robertdebock](https://robertdebock.nl/)
+[robertdebock](https://adfinis.com/)
 
-Please consider [sponsoring me](https://github.com/sponsors/robertdebock).

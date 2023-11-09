@@ -14,10 +14,10 @@ These version of [ansible](https://pypi.org/project/ansible/) are supported:
 
 ## [Reporting a Vulnerability](#reporting-a-vulnarability)
 
-Please [open an issue](https://github.com/robertdebock/ansible-role-bareos_dir/issues) describing the vulnerability.
+Please [open an issue](https://github.com/adfinis/ansible-role-bareos_dir/issues) describing the vulnerability.
 
 Tell them where to go, how often they can expect to get an update on a
 reported vulnerability, what to expect if the vulnerability is accepted or
 declined, etc.
 
-Please consider [sponsoring me](https://github.com/sponsors/robertdebock).
+Please consider [sponsoring me](https://github.com/sponsors/adfinis).
