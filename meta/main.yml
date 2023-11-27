@@ -1,6 +1,6 @@
 ---
 galaxy_info:
-  author: Adfinis
+  author: adfinis
   role_name: bareos_dir
   description: Install and configure [Bareos](https://www.bareos.com/) Director.
   license: Apache-2.0
