@@ -385,5 +385,5 @@ If you find issues, please register them in [GitHub](https://github.com/adfinis/
 
 ## [Author Information](#author-information)
 
-[robertdebock](https://adfinis.com/)
+[Adfinis](https://adfinis.com/)
 
