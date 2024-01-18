@@ -19,6 +19,9 @@ FileSet {
       Compression = {{ item.include.options.compression }}
 {% endif %}
     }
+{% if item.include.plugin is defined %}
+    Plugin = {{ item.include.plugin }}
+{% endif %}
 {% if item.include.exclude_dirs_containing is defined %}
       Exclude Dir Containing = {{ item.include.exclude_dirs_containing }}
 {% endif %}
