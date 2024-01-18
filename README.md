@@ -41,7 +41,14 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
           password: "MySecretPassword"
           maximum_concurrent_jobs: 3
         - name: "disabled-client"
-          enabled: no
+          enabled: false
+        - name: roadwarrior_notebook
+          address: ""
+          password "MySecretPassword"
+          maximum_concurrent_jobs: 3
+          connection_from_director_to_client: false
+          connection_from_client_to_director: true
+          heartbeat_interval: 60
       bareos_dir_filesets:
         - name: LinuxAll
           description: "Backup all regular filesystems, determined by filesystem type."
@@ -72,6 +79,18 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
               - /var/tmp
               - /.journal
               - /.fsck
+        - name: MariaDB_Backup
+          description: >-
+            Backup the MariaDB databases with mariabackup. See: https://docs.bareos.org/TasksAndConcepts/Plugins.html#mariadb-mariabackup-plugin
+          include:
+            files: []
+            options:
+              signature: MD5
+              compression: GZIP
+            plugin: |+
+              "python"
+                           ":module_name=bareos-fd-mariabackup"
+                           ":mycnf=/root/.my.cnf"
         - name: disabled-fileset
           enabled: no
       bareos_dir_jobdefs:
