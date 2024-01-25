@@ -14,13 +14,13 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
 ---
 - name: Converge
   hosts: all
-  become: yes
-  gather_facts: yes
+  become: true
+  gather_facts: true
 
   roles:
     - role: adfinis.bareos_dir
-      bareos_dir_backup_configurations: yes
-      bareos_dir_install_debug_packages: yes
+      bareos_dir_backup_configurations: true
+      bareos_dir_install_debug_packages: true
       bareos_dir_catalogs:
         - name: MyCatalog
           dbname: bareos
@@ -41,7 +41,14 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
           password: "MySecretPassword"
           maximum_concurrent_jobs: 3
         - name: "disabled-client"
-          enabled: no
+          enabled: false
+        - name: roadwarrior_notebook
+          address: ""
+          password "MySecretPassword"
+          maximum_concurrent_jobs: 3
+          connection_from_director_to_client: false
+          connection_from_client_to_director: true
+          heartbeat_interval: 60
       bareos_dir_filesets:
         - name: LinuxAll
           description: "Backup all regular filesystems, determined by filesystem type."
@@ -51,7 +58,7 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
             exclude_dirs_containing: nobackup
             options:
               signature: MD5
-              one_fs: no
+              one_fs: false
               fs_types:
                 - btrfs
                 - ext2
@@ -72,8 +79,20 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
               - /var/tmp
               - /.journal
               - /.fsck
+        - name: MariaDB_Backup
+          description: >-
+            Backup the MariaDB databases with mariabackup. See: https://docs.bareos.org/TasksAndConcepts/Plugins.html#mariadb-mariabackup-plugin
+          include:
+            files: []
+            options:
+              signature: MD5
+              compression: GZIP
+            plugin: |+
+              "python"
+                           ":module_name=bareos-fd-mariabackup"
+                           ":mycnf=/root/.my.cnf"
         - name: disabled-fileset
-          enabled: no
+          enabled: false
       bareos_dir_jobdefs:
         - name: DefaultJob-1
           type: Backup
@@ -89,7 +108,7 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
           differential_backup_pool: Differential
           incremental_backup_pool: Incremental
         - name: "disabled-jobdef"
-          enabled: no
+          enabled: false
       bareos_dir_jobs:
         - name: my_job
           description: "My backup job"
@@ -100,7 +119,7 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
           storage: File-1
           messages: Standard
         - name: disabled_job
-          enabled: no
+          enabled: false
         - name: BackupCatalog
           description: "Backup the catalog database (after the nightly save)"
           jobdefs: DefaultJob
@@ -132,7 +151,7 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
             - "!skipped"
             - "!saved"
         - name: "disabled-message"
-          enabled: no
+          enabled: false
         - name: Daemon
           description: "Message delivery for daemon messages (no job)."
           mailcommand: '/usr/bin/bsmtp -h localhost -f \"\(Bareos\) \<%r\>\" -s \"Bareos daemon message\" %r'
@@ -168,14 +187,14 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
       bareos_dir_pools:
         - name: Full
           pool_type: Backup
-          recycle: yes
-          autoprune: yes
+          recycle: true
+          autoprune: true
           volume_retention: 365 days
           maximum_volume_bytes: 50G
           maximum_volumes: 100
           label_format: "Full-"
         - name: "disabled-pool"
-          enabled: no
+          enabled: false
       bareos_dir_profiles:
         - name: webui-admin
           jobacl:
@@ -210,7 +229,7 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
           pluginoptionsacl:
             - "*all*"
         - name: "disabled-message"
-          enabled: no
+          enabled: false
       bareos_dir_schedules:
         - name: WeeklyCycle
           run:
@@ -222,18 +241,18 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
           run:
             - Full mon-fri at 21:10
         - name: "disabled-schedule"
-          enabled: no
+          enabled: false
       bareos_dir_storages:
         - name: File-1
           address: dir-1
           password: "MySecretPassword"
           device: FileStorage
           media_type: File
-          tls_enable: yes
-          tls_verify_peer: no
+          tls_enable: true
+          tls_verify_peer: false
           maximum_concurrent_jobs: 3
         - name: "disabled-storage"
-          enabled: no
+          enabled: false
 ```
 
 The machine needs to be prepared. In CI this is done using [`molecule/default/prepare.yml`](https://github.com/adfinis/ansible-role-bareos_dir/blob/master/molecule/default/prepare.yml):
@@ -242,8 +261,8 @@ The machine needs to be prepared. In CI this is done using [`molecule/default/pr
 ---
 - name: Prepare
   hosts: all
-  become: yes
-  gather_facts: no
+  become: true
+  gather_facts: false
 
   roles:
     - role: robertdebock.bootstrap
@@ -259,7 +278,7 @@ The machine needs to be prepared. In CI this is done using [`molecule/default/pr
     # - role: robertdebock.core_dependencies
     # - role: robertdebock.postfix
     - role: adfinis.bareos_repository
-      bareos_repository_enable_tracebacks: yes
+      bareos_repository_enable_tracebacks: true
 ```
 
 These roles are provided as is, without warranty of any kind. Use it at your own risk.
@@ -275,10 +294,10 @@ The default values for the variables are set in [`defaults/main.yml`](https://gi
 # The director has these configuration parameters.
 
 # Backup the configuration files.
-bareos_dir_backup_configurations: no
+bareos_dir_backup_configurations: false
 
 # Install debug packages. This requires the debug repositories to be enabled.
-bareos_dir_install_debug_packages: no
+bareos_dir_install_debug_packages: false
 
 # The hostname of the Director.
 bareos_dir_hostname: "{{ inventory_hostname }}"
@@ -296,10 +315,10 @@ bareos_dir_max_concurrent_jobs: 100
 bareos_dir_message: Daemon
 
 # Enable TLS.
-bareos_dir_tls_enable: yes
+bareos_dir_tls_enable: true
 
 # Verify the peer.
-bareos_dir_tls_verify_peer: no
+bareos_dir_tls_verify_peer: false
 
 # A list of catalogs to configure.
 bareos_dir_catalogs: []
