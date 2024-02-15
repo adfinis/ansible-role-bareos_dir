@@ -75,7 +75,14 @@
           full_backup_pool: Full
           differential_backup_pool: Differential
           incremental_backup_pool: Incremental
-        - name: "disabled-jobdef"
+        - name: DefaultJob-Plugin
+          type: Backup
+          plugin_options: |+
+            "python3"
+                         ":instance=0"
+                         ":module_name=bareos-dir-class-plugins"
+                         ":testoption=testparam"
+        - name: disabled-jobdef
           enabled: no
       bareos_dir_jobs:
         - name: my_job
