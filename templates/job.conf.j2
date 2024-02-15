@@ -45,6 +45,9 @@
 {% if item.maximum_concurrent_jobs is defined %}
   Maximum Concurrent Jobs = {{ item.maximum_concurrent_jobs }}
 {% endif %}
+{% if item.plugin_options is defined %}
+  Dir Plugin Options = {{ item.plugin_options }}
+{% endif %}
 }
 {% else %}
 # This file is not enabled.

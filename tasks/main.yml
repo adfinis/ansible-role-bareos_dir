@@ -4,7 +4,7 @@
 - name: Import assert.yml
   ansible.builtin.import_tasks:
     file: assert.yml
-  run_once: yes
+  run_once: true
   delegate_to: localhost
 
 - name: Prevent db installation (apt)
@@ -35,7 +35,7 @@
     cmd: "{{ item }}"
     creates: "/var/log/bareos/{{ item | basename }}.log"
   become_user: postgres
-  become: yes
+  become: true
   register: bareos_setup_database
   loop: "{{ bareos_dir_install_scripts }}"
   loop_control:
@@ -227,8 +227,15 @@
     - Check configuration
     - Reload bareos-dir
 
+- name: Import plugin tasklist
+  ansible.builtin.import_tasks:
+    file: plugins.yml
+  when:
+    - bareos_dir_plugins is defined
+    - bareos_dir_plugins is iterable
+
 - name: Start bareos-dir
   ansible.builtin.service:
     name: bareos-dir
     state: started
-    enabled: yes
+    enabled: true

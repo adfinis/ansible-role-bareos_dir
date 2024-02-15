@@ -1,0 +1,10 @@
+---
+
+bareos_dir_requirements:
+  - procps
+
+bareos_dir_debug_packages:
+  - bareos-dbg
+  - gdb
+
+bareos_dir_plugin_dir: "/usr/lib/bareos/plugins"

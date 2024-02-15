@@ -1,0 +1,18 @@
+---
+
+- name: plugins | Get data
+  ansible.builtin.set_fact:
+    _plugin_data: >-
+      {{ _plugin_data + (bareos_dir_plugin_list | selectattr('name', 'equalto', item) | list) }}
+  loop: "{{ bareos_dir_plugins }}"
+  vars:
+    _plugin_data: []  # empty list to append to
+
+- name: plugins | Install Bareos plugin packages
+  ansible.builtin.package:
+    name: "{{ item.packages }}"
+    state: present
+  loop: "{{ _plugin_data }}"
+  notify:
+    - Check configuration
+    - Reload bareos-dir

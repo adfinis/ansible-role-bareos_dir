@@ -14,4 +14,8 @@ Director {
 {% if bareos_dir_tls_verify_peer %}
   TLS Verify Peer = Yes
 {% endif %}
+{% if bareos_dir_plugins is defined %}
+  Plugin Names = "{{ bareos_dir_plugin_name }}"
+  Plugin Directory = "{{ bareos_dir_plugin_dir }}"
+{% endif %}
 }
