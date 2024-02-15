@@ -59,6 +59,46 @@
               - /var/tmp
               - /.journal
               - /.fsck
+        - name: FileSet_MariaDB
+          description: >-
+            Backup the MariaDB databases with mariabackup.
+            See: https://docs.bareos.org/TasksAndConcepts/Plugins.html#mariadb-mariabackup-plugin
+          include:
+            files: []
+            options:
+              signature: MD5
+              compression: GZIP
+            plugin: |+
+              "python3"
+                           ":module_name=bareos-fd-mariabackup"
+                           ":mycnf=/root/.my.cnf"
+        - name: FileSet_Mysqldump
+          description: >-
+            Backup MySQL databases with mysqldump.
+            See: https://docs.bareos.org/Appendix/Howtos.html#backup-mysql-python
+          include:
+            files: []
+            options:
+              signature: MD5
+              compression: GZIP
+            plugin: |+
+              "python3"
+                           ":module_name=bareos_mysql_dump"
+                           ":db=test,mysql"
+        - name: FileSet_PostgreSQL
+          description: >-
+            Backup PostgreSQL databases.
+            See: https://docs.bareos.org/TasksAndConcepts/Plugins.html#postgresql-plugin
+          include:
+            files: []
+            options:
+              signature: MD5
+              compression: GZIP
+            plugin: |+
+              "python3"
+                           ":module_name=bareos-fd-postgresql"
+                           ":db_host=/run/postgresql/"
+                           ":wal_archive_dir=/var/lib/pgsql/wal_archive/"
         - name: disabled-fileset
           enabled: no
       bareos_dir_jobdefs:
