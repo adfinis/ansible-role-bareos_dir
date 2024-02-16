@@ -16,3 +16,21 @@
       register: bareos_dir_test_config
       failed_when:
         - bareos_dir_test_config.stdout_lines is search("There are configuration warnings")
+
+    - name: Test bconsole
+      ansible.builtin.command:
+        cmd: bconsole --test-config
+      register: bareos_dir_test_config
+      failed_when:
+        - bareos_dir_test_config.stdout_lines is search("There are configuration warnings") or
+          bareos_dir_test_config.stdout_lines is search("CONFIG ERROR")
+
+    - name: Check if bareos python-dir plugin is installed
+      ansible.builtin.package:
+        name:
+          - bareos-director-python-plugin
+        state: present
+      check_mode: true
+      diff: true
+      register: _result
+      failed_when: _result.changed
