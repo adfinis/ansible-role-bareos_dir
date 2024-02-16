@@ -4,4 +4,4 @@ bareos_dir_debug_packages:
   - bareos-debuginfo
   - gdb
 
-bareos_dir_plugin_name: python
+bareos_dir_plugin_name: python3
