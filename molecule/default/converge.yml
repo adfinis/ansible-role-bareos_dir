@@ -8,6 +8,8 @@
     - role: ansible-role-bareos_dir
       bareos_dir_backup_configurations: yes
       bareos_dir_install_debug_packages: yes
+      bareos_dir_hostname: bareos-dir
+      bareos_dir_password: "MySecretPassword"
       bareos_dir_catalogs:
         - name: MyCatalog
           dbname: bareos
@@ -119,9 +121,9 @@
           type: Backup
           plugin_options: |+
             "python3"
-                         ":instance=0"
-                         ":module_name=bareos-dir-class-plugins"
-                         ":testoption=testparam"
+                                  ":instance=0"
+                                  ":module_name=bareos-dir-class-plugins"
+                                  ":testoption=testparam"
         - name: disabled-jobdef
           enabled: no
       bareos_dir_jobs:
@@ -270,3 +272,12 @@
           enabled: no
       bareos_dir_plugins:
         - director-python
+
+    - role: ansible-role-bareos_console
+      bareos_console_directors:
+        - name: bareos-dir
+          address: localhost
+          password: "MySecretPassword"
+          description: "Bareos Console credentials for local Director"
+          tls_enable: true
+          tls_verify_peer: false
