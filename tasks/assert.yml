@@ -143,10 +143,3 @@
       - bareos_dir_install_debug_packages is defined
       - bareos_dir_install_debug_packages is boolean
     quiet: true
-
-- name: assert | Test bareos_dir_plugins
-  ansible.builtin.assert:
-    that:
-      - bareos_dir_plugins is defined
-      - bareos_dir_plugins is iterable
-    quiet: true
