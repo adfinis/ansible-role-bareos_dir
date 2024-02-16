@@ -44,7 +44,7 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
           enabled: false
         - name: roadwarrior_notebook
           address: ""
-          password "MySecretPassword"
+          password: "MySecretPassword"
           maximum_concurrent_jobs: 3
           connection_from_director_to_client: false
           connection_from_client_to_director: true
@@ -253,6 +253,8 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
           maximum_concurrent_jobs: 3
         - name: "disabled-storage"
           enabled: false
+      bareos_dir_plugins:
+        - director-python
 ```
 
 The machine needs to be prepared. In CI this is done using [`molecule/default/prepare.yml`](https://github.com/adfinis/ansible-role-bareos_dir/blob/master/molecule/default/prepare.yml):
@@ -384,9 +386,9 @@ This role has been tested on these [container images](https://hub.docker.com/u/r
 
 |container|tags|
 |---------|----|
-|[Debian](https://hub.docker.com/r/robertdebock/debian)|bookworm, bullseye, buster|
+|[Debian](https://hub.docker.com/r/robertdebock/debian)|buster, bullseye, bookworm|
 |[EL](https://hub.docker.com/r/robertdebock/enterpriselinux)|7, 8, 9|
-|[Fedora](https://hub.docker.com/r/robertdebock/fedora/)|37, 38|
+|[Fedora](https://hub.docker.com/r/robertdebock/fedora/)|38,39|
 |[opensuse](https://hub.docker.com/r/robertdebock/opensuse)|all|
 |[Ubuntu](https://hub.docker.com/r/robertdebock/ubuntu)|jammy, focal|
 
