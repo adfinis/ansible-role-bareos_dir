@@ -9,7 +9,7 @@ argument_specs:
     options:
       bareos_dir_backup_configurations:
         type: "bool"
-        default: no
+        default: false
         description: "Backup the configuration files."
       bareos_dir_hostname:
         type: "str"
@@ -85,5 +85,9 @@ argument_specs:
         description: "A list of storages to configure."
       bareos_dir_install_debug_packages:
         type: "bool"
-        default: no
+        default: false
         description: "Install debug packages. This requires the debug repositories to be enabled."
+      bareos_dir_plugins:
+        type: "list"
+        default: []
+        description: "A list of Bareos Director plugins"
