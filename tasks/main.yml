@@ -6,6 +6,7 @@
   with_first_found:
     - "{{ ansible_facts.distribution }}_{{ ansible_facts.distribution_major_version }}.yml"
     - "{{ ansible_facts.os_family }}.yml"
+    - main.yml  # use main.yml if no match was found
 
 - name: Import assert.yml
   ansible.builtin.import_tasks:
