@@ -273,7 +273,7 @@
       bareos_dir_plugins:
         - director-python
 
-    - role: ansible-role-bareos_console
+    - role: adfinis.bareos_console
       bareos_console_directors:
         - name: bareos-dir
           address: localhost
