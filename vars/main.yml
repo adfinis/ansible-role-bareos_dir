@@ -24,6 +24,6 @@ bareos_dir_plugin_name: python3
 bareos_dir_plugin_dir: "/usr/lib64/bareos/plugins"
 
 bareos_dir_plugin_list:
-  - name: python-dir
+  - name: director-python
     packages:
       - bareos-director-python-plugin
