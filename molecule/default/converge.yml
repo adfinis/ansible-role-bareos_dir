@@ -268,3 +268,5 @@
           maximum_concurrent_jobs: 3
         - name: "disabled-storage"
           enabled: no
+      bareos_dir_plugins:
+        - director-python
