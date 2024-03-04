@@ -24,6 +24,11 @@
             - .status
           jobacl:
             - "*all"
+        - name: icinga2-mon
+          description: "Console used by Icinga2 monitoring checks"
+          password: "MySecretPassword"
+          profile: "icinga2-mon"
+          tls_enable: no
       bareos_dir_clients:
         - name: bareos-fd
           address: 127.0.0.1
@@ -245,6 +250,29 @@
             - "*all*"
           pluginoptionsacl:
             - "*all*"
+        - name: "icinga2-mon"
+          jobacl:
+            - "*all*"
+          clientacl:
+            - "*all*"
+          storageacl:
+            - "*all*"
+          scheduleacl:
+            - "*all*"
+          poolacl:
+            - "*all*"
+          commandacl:
+            - ".api"
+            - "list"
+            - "llist"
+            - "status"
+            - "show"
+          filesetacl:
+            - "*all*"
+          catalogacl:
+            - "*all*"
+          whereacl:
+            - "*none*"
         - name: "disabled-message"
           enabled: no
       bareos_dir_schedules:
