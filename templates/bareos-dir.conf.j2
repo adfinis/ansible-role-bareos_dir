@@ -18,4 +18,13 @@ Director {
   Plugin Names = "{{ bareos_dir_plugin_name }}"
   Plugin Directory = "{{ bareos_dir_plugin_dir }}"
 {% endif %}
+{% if bareos_dir_ca_cert is defined %}
+  TLS CA Certificate File = "{{ bareos_dir_ca_cert }}"
+{% endif %}
+{% if bareos_dir_client_cert is defined %}
+  TLS Certificate = "{{ bareos_dir_client_cert }}"
+{% endif %}
+{% if bareos_dir_client_key is defined %}
+  TLS Key = "{{ bareos_dir_client_key }}"
+{% endif %}
 }
