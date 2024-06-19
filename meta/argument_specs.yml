@@ -40,14 +40,14 @@ argument_specs:
         default: no
         description: "Verify the peer."
       bareos_dir_tls_ca_cert:
-          type: "str"
-          description: "The CA Certificate for the Director"
+        type: "str"
+        description: "The CA Certificate for the Director"
       bareos_dir_tls_cert:
-          type: "str"
-          description: "The TLS certificate of the director"
+        type: "str"
+        description: "The TLS certificate of the director"
       bareos_dir_tls_cert_key:
-          type: "str"
-          description: "The TLS certificate key of the director"
+        type: "str"
+        description: "The TLS certificate key of the director"
       bareos_dir_catalogs:
         type: "list"
         default: []
