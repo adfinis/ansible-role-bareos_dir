@@ -41,7 +41,7 @@ bareos_dir_client_cert:
   dest: "/etc/bareos/director.pem"
 
 # The path of the client certificate key of the director
-: "/etc/bareos/director.key"
+"/etc/bareos/director.key"
   src: ""
   dest: "/etc/bareos/director.key"
 
