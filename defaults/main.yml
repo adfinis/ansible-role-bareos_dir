@@ -36,12 +36,12 @@ bareos_dir_ca_cert:
   dest: "/etc/bareos/bareosCA.pem"
 
 # The path of the client certificate of the director
-bareos_dir_client_cert:
+bareos_dir_tls_cert:
   src: ""
   dest: "/etc/bareos/director.pem"
 
 # The path of the client certificate key of the director
-"/etc/bareos/director.key"
+bareos_dir_tls_cert_key:
   src: ""
   dest: "/etc/bareos/director.key"
 
