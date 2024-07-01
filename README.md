@@ -391,7 +391,7 @@ This role has been tested on these [container images](https://hub.docker.com/u/r
 |---------|----|
 |[Debian](https://hub.docker.com/r/robertdebock/debian)|buster, bullseye, bookworm|
 |[EL](https://hub.docker.com/r/robertdebock/enterpriselinux)|9|
-|[Fedora](https://hub.docker.com/r/robertdebock/fedora/)|38,39|
+|[Fedora](https://hub.docker.com/r/robertdebock/fedora)|38, 39|
 |[Ubuntu](https://hub.docker.com/r/robertdebock/ubuntu)|jammy|
 
 The minimum version of Ansible required is 2.12, tests have been done to:

@@ -1,4 +1,5 @@
 ---
+
 roles:
   - name: robertdebock.bootstrap
   - name: adfinis.bareos_repository
