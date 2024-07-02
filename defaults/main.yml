@@ -31,19 +31,16 @@ bareos_dir_tls_enable: yes
 bareos_dir_tls_verify_peer: no
 
 # The path of the CA certificate file.
-bareos_dir_ca_cert:
-  src: ""
-  dest: "/etc/bareos/bareosCA.pem"
+bareos_dir_tls_ca_cert_src: ""
+bareos_dir_tls_ca_cert_dest: "/etc/bareos/bareosCA.pem"
 
 # The path of the client certificate of the director
-bareos_dir_tls_cert:
-  src: ""
-  dest: "/etc/bareos/director.pem"
+bareos_dir_tls_cert_src: ""
+bareos_dir_tls_cert_dest: "/etc/bareos/director.pem"
 
 # The path of the client certificate key of the director
-bareos_dir_tls_cert_key:
-  src: ""
-  dest: "/etc/bareos/director.key"
+bareos_dir_tls_cert_key_src: ""
+bareos_dir_tls_cert_key_dest: "/etc/bareos/director.key"
 
 # A list of catalogs to configure.
 bareos_dir_catalogs: []
