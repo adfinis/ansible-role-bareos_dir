@@ -70,8 +70,10 @@
       dest: bareos_dir_tls_cert_key_dest
   when:
     - bareos_dir_tls_enable
-    - item.src != ""
-    - item.dest != ""
+    - bareos_dir_tls_enable
+    - bareos_dir_tls_ca_cert.src != ""
+    - bareos_dir_tls_cert.src != ""
+    - bareos_dir_tls_cert_key.src != ""
 
 - name: Place bareos-dir.conf
   ansible.builtin.template:
