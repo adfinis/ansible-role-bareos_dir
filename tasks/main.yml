@@ -62,11 +62,16 @@
     mode: "0640"
     backup: "{{ bareos_dir_backup_configurations }}"
   loop:
-    - bareos_dir_tls_ca_cert
-    - bareos_dir_tls_cert
-    - bareos_dir_tls_cert_key
+    - src: bareos_dir_tls_ca_cert_src
+      dest: bareos_dir_tls_ca_cert_dest
+    - src: bareos_dir_tls_cert_src
+      dest: bareos_dir_tls_cert_dest
+    - src: bareos_dir_tls_cert_key_src
+      dest: bareos_dir_tls_cert_key_dest
   when:
     - bareos_dir_tls_enable
+    - item.src != ""
+    - item.dest != ""
 
 - name: Place bareos-dir.conf
   ansible.builtin.template:
