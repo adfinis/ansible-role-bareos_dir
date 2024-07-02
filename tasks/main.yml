@@ -53,6 +53,28 @@
 - name: Run handlers
   ansible.builtin.meta: flush_handlers
 
+- name: Place TLS certificates
+  ansible.builtin.copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    owner: bareos
+    group: bareos
+    mode: "0640"
+    backup: "{{ bareos_dir_backup_configurations }}"
+  loop:
+    - src: bareos_dir_tls_ca_cert_src
+      dest: bareos_dir_tls_ca_cert_dest
+    - src: bareos_dir_tls_cert_src
+      dest: bareos_dir_tls_cert_dest
+    - src: bareos_dir_tls_cert_key_src
+      dest: bareos_dir_tls_cert_key_dest
+  when:
+    - bareos_dir_tls_enable
+    - bareos_dir_tls_enable
+    - bareos_dir_tls_ca_cert.src != ""
+    - bareos_dir_tls_cert.src != ""
+    - bareos_dir_tls_cert_key.src != ""
+
 - name: Place bareos-dir.conf
   ansible.builtin.template:
     src: bareos-dir.conf.j2
