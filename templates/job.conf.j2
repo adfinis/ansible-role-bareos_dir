@@ -101,6 +101,7 @@
 {% if item.virtual_full_backup_pool is defined %}
   Virtual Full Backup Pool = {{ item.virtual_full_backup_pool }}
 {% endif %}
+
 {% if item.run_script is defined %}
   Run Script {
 {% if item.run_script.command is defined %}
@@ -118,8 +119,8 @@
 {% if item.run_script.runs_when is defined %}
     Runs When = {{ item.run_script.runs_when }}
 {% endif %}
-  }
 {% endif %}
+
 {% if item.run_before_job is defined %}
   RunBeforeJob = {{ item.run_before_job }}
 {% endif %}
