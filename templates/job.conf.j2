@@ -74,6 +74,7 @@
 {% endif %}
 {% if item.plugin_options is defined %}
   Dir Plugin Options = {{ item.plugin_options }}
+{% endif %}
 {% if item.max_concurrent_copies is defined %}
   Max Concurrent Copies = {{ item.max_concurrent_copies }}
 {% endif %}
@@ -119,6 +120,7 @@
 {% if item.run_script.runs_when is defined %}
     Runs When = {{ item.run_script.runs_when }}
 {% endif %}
+  }
 {% endif %}
 
 {% if item.run_before_job is defined %}
@@ -175,6 +177,7 @@
 {% if item.prefer_mounted_volumes is defined %}
   Prefer Mounted Volumes = {{ item.prefer_mounted_volumes | ternary('yes', 'no') }}
 {% endif %}
+
 }
 {% else %}
 # This file is not enabled.
