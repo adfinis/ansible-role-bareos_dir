@@ -74,6 +74,7 @@
 {% endif %}
 {% if item.plugin_options is defined %}
   Dir Plugin Options = {{ item.plugin_options }}
+{% endif %}
 {% if item.max_concurrent_copies is defined %}
   Max Concurrent Copies = {{ item.max_concurrent_copies }}
 {% endif %}
@@ -101,6 +102,7 @@
 {% if item.virtual_full_backup_pool is defined %}
   Virtual Full Backup Pool = {{ item.virtual_full_backup_pool }}
 {% endif %}
+
 {% if item.run_script is defined %}
   Run Script {
 {% if item.run_script.command is defined %}
@@ -120,6 +122,7 @@
 {% endif %}
   }
 {% endif %}
+
 {% if item.run_before_job is defined %}
   RunBeforeJob = {{ item.run_before_job }}
 {% endif %}
@@ -174,6 +177,7 @@
 {% if item.prefer_mounted_volumes is defined %}
   Prefer Mounted Volumes = {{ item.prefer_mounted_volumes | ternary('yes', 'no') }}
 {% endif %}
+
 }
 {% else %}
 # This file is not enabled.

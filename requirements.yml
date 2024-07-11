@@ -1,4 +1,5 @@
 ---
+
 roles:
   - name: robertdebock.bootstrap
   - name: adfinis.bareos_repository
@@ -11,6 +12,8 @@ roles:
   # The `core_dependencies` and `postfix` roles provide mailing capabilities for the `bareos_role`: "dir".
   # - name: robertdebock.core_dependencies
   # - name: robertdebock.postfix
-
   # use bconsole to be able to run better tests for Bareos Director
   - name: adfinis.bareos_console
+collections:
+  - name: community.general
+  - name: community.postgresql
