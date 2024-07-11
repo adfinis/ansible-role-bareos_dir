@@ -25,10 +25,10 @@ bareos_dir_max_concurrent_jobs: 100
 bareos_dir_message: Daemon
 
 # Enable TLS.
-bareos_dir_tls_enable: yes
+bareos_dir_tls_enable: true
 
 # Verify the peer.
-bareos_dir_tls_verify_peer: no
+bareos_dir_tls_verify_peer: false
 
 # The path of the CA certificate file.
 bareos_dir_tls_ca_cert_src: ""
