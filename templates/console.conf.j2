@@ -21,6 +21,7 @@ Console {
 {% endif %}
 {% if item.pamauth is defined %}
   UsePamAuthentication = {{ item.pamauth | ternary('Yes', 'No') }}
+{% endif %}
 }
 {% else %}
 # This file is not enabled.
