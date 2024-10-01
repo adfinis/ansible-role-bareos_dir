@@ -19,6 +19,8 @@ Console {
 {% if item.tlsenable is defined %}
   TlsEnable = {{ item.tlsenable | ternary('Yes', 'No') }}
 {% endif %}
+{% if item.pamauth is defined %}
+  UsePamAuthentication = {{ item.pamauth | ternary('Yes', 'No') }}
 }
 {% else %}
 # This file is not enabled.
