@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: ansible-lint
         uses: ansible-community/ansible-lint-action@main
   test:
@@ -30,18 +30,12 @@ jobs:
             tag: "latest"
           - image: "debian"
             tag: "bullseye"
-          - image: "debian"
-            tag: "buster"
           - image: "enterpriselinux"
             tag: "8"
           - image: "enterpriselinux"
             tag: "latest"
           - image: "fedora"
-            tag: "38"
-          - image: "fedora"
             tag: "39"
-          # TODO no packages for fedora 40 yet: https://download.bareos.org/current/
-          # pipeline will fail for now. replace 38 as soon as 40 is ready and working.
           - image: "fedora"
             tag: "latest"
           - image: "opensuse"
