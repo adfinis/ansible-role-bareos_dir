@@ -359,29 +359,9 @@ bareos_dir_schedules: []
 bareos_dir_storages: []
 ```
 
-## [Requirements](#requirements)
-
-- pip packages listed in [requirements.txt](https://github.com/adfinis/ansible-role-bareos_dir/blob/master/requirements.txt).
-
-## [State of used roles](#state-of-used-roles)
-
-The following roles are used to prepare a system. You can prepare your system in another way.
-
-| Requirement | GitHub | GitLab |
-|-------------|--------|--------|
-|[robertdebock.bootstrap](https://galaxy.ansible.com/adfinis/robertdebock.bootstrap)|[![Build Status GitHub](https://github.com/adfinis/robertdebock.bootstrap/workflows/Ansible%20Molecule/badge.svg)](https://github.com/adfinis/robertdebock.bootstrap/actions)|[![Build Status GitLab](https://gitlab.com/robertdebock-iac/robertdebock.bootstrap/badges/master/pipeline.svg)](https://gitlab.com/robertdebock-iac/robertdebock.bootstrap)|
-|[adfinis.bareos_repository](https://galaxy.ansible.com/adfinis/bareos_repository)|[![Build Status GitHub](https://github.com/adfinis/ansible-role-bareos_repository/workflows/Ansible%20Molecule/badge.svg)](https://github.com/adfinis/ansible-role-bareos_repository/actions)|[![Build Status GitLab](https://gitlab.com/robertdebock-iac/ansible-role-bareos_repository/badges/master/pipeline.svg)](https://gitlab.com/robertdebock-iac/ansible-role-bareos_repository)|
-|[robertdebock.buildtools](https://galaxy.ansible.com/adfinis/robertdebock.buildtools)|[![Build Status GitHub](https://github.com/adfinis/robertdebock.buildtools/workflows/Ansible%20Molecule/badge.svg)](https://github.com/adfinis/robertdebock.buildtools/actions)|[![Build Status GitLab](https://gitlab.com/robertdebock-iac/robertdebock.buildtools/badges/master/pipeline.svg)](https://gitlab.com/robertdebock-iac/robertdebock.buildtools)|
-|[robertdebock.epel](https://galaxy.ansible.com/adfinis/robertdebock.epel)|[![Build Status GitHub](https://github.com/adfinis/robertdebock.epel/workflows/Ansible%20Molecule/badge.svg)](https://github.com/adfinis/robertdebock.epel/actions)|[![Build Status GitLab](https://gitlab.com/robertdebock-iac/robertdebock.epel/badges/master/pipeline.svg)](https://gitlab.com/robertdebock-iac/robertdebock.epel)|
-|[robertdebock.python_pip](https://galaxy.ansible.com/adfinis/robertdebock.python_pip)|[![Build Status GitHub](https://github.com/adfinis/robertdebock.python_pip/workflows/Ansible%20Molecule/badge.svg)](https://github.com/adfinis/robertdebock.python_pip/actions)|[![Build Status GitLab](https://gitlab.com/robertdebock-iac/robertdebock.python_pip/badges/master/pipeline.svg)](https://gitlab.com/robertdebock-iac/robertdebock.python_pip)|
-|[robertdebock.postgres](https://galaxy.ansible.com/adfinis/robertdebock.postgres)|[![Build Status GitHub](https://github.com/adfinis/robertdebock.postgres/workflows/Ansible%20Molecule/badge.svg)](https://github.com/adfinis/robertdebock.postgres/actions)|[![Build Status GitLab](https://gitlab.com/robertdebock-iac/robertdebock.postgres/badges/master/pipeline.svg)](https://gitlab.com/robertdebock-iac/robertdebock.postgres)|
-
 ## [Context](#context)
 
 This role is a part of many compatible roles. Have a look at [the documentation of these roles](https://adfinis.com/) for further information.
-
-Here is an overview of related roles:
-![dependencies](https://raw.githubusercontent.com/adfinis/ansible-role-bareos_dir/png/requirements.png "Dependencies")
 
 ## [Compatibility](#compatibility)
 
@@ -389,10 +369,10 @@ This role has been tested on these [container images](https://hub.docker.com/u/r
 
 |container|tags|
 |---------|----|
-|[Debian](https://hub.docker.com/r/robertdebock/debian)|buster, bullseye, bookworm|
+|[Debian](https://hub.docker.com/r/robertdebock/debian)|bullseye, bookworm|
 |[EL](https://hub.docker.com/r/robertdebock/enterpriselinux)|9|
-|[Fedora](https://hub.docker.com/r/robertdebock/fedora)|38, 39|
-|[Ubuntu](https://hub.docker.com/r/robertdebock/ubuntu)|jammy|
+|[Fedora](https://hub.docker.com/r/robertdebock/fedora)|39, 40|
+|[Ubuntu](https://hub.docker.com/r/robertdebock/ubuntu)|jammy, numbat|
 
 The minimum version of Ansible required is 2.12, tests have been done to:
 

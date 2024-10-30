@@ -8,23 +8,27 @@ Director {
   Maximum Concurrent Jobs = {{ bareos_dir_max_concurrent_jobs }}
 {% endif %}
   Messages = "{{ bareos_dir_message }}"
-{% if not bareos_dir_tls_enable %}
-  TLS Enable = No
+
+  TLS Enable = {{ bareos_dir_tls_enable | ternary("yes","no")}}
+{% if bareos_dir_tls_ca_cert_dest is defined and
+  bareos_dir_tls_cert_dest is defined and
+  bareos_dir_tls_cert_key_dest is defined
+%}
+  TLS CA Certificate File = {{ bareos_dir_tls_ca_cert_dest }}
+  TLS Certificate = {{ bareos_dir_tls_cert_dest }}
+  TLS Key = {{ bareos_dir_tls_cert_key_dest }}
 {% endif %}
-{% if bareos_dir_tls_verify_peer %}
-  TLS Verify Peer = Yes
+
+  TLS Verify Peer = {{ bareos_dir_tls_verify_peer | default(false) | ternary("yes","no")}}
+{% if bareos_dir_tls_allowed_cns is defined and
+  bareos_dir_tls_allowed_cns is iterable %}
+{% for cn in bareos_dir_tls_allowed_cns %}
+  TLS Allowed CN = "{{ cn }}"
+{% endfor %}
 {% endif %}
+
 {% if bareos_dir_plugins is defined %}
   Plugin Names = "{{ bareos_dir_plugin_name }}"
   Plugin Directory = "{{ bareos_dir_plugin_dir }}"
-{% endif %}
-{% if bareos_dir_tls_ca_cert_dest is defined and bareos_dir_tls_ca_cert_dest != "" %}
-  TLS CA Certificate File = "{{ bareos_dir_tls_ca_cert_dest }}"
-{% endif %}
-{% if bareos_dir_tls_cert_dest is defined and bareos_dir_tls_cert_dest != "" %}
-  TLS Certificate = "{{ bareos_dir_tls_cert_dest }}"
-{% endif %}
-{% if bareos_dir_tls_cert_key_dest is defined and bareos_dir_tls_cert_key_dest != "" %}
-  TLS Key = "{{ bareos_dir_tls_cert_key_dest }}"
 {% endif %}
 }
