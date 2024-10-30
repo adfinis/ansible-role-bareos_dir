@@ -273,6 +273,15 @@
       bareos_dir_plugins:
         - director-python
 
+      bareos_dir_tls_enable: true
+      bareos_dir_tls_cert_src: "tls_files/molecule-test.pem"
+      bareos_dir_tls_ca_cert_src: "tls_files/molecule-ca.pem"
+      bareos_dir_tls_cert_key_src: "tls_files/molecule-test.key"
+      bareos_dir_tls_verify_peer: true
+      bareos_dir_tls_allowed_cns:
+        - "bareos-01@example.com"
+        - "bareos-02@example.com"
+
     - role: adfinis.bareos_console
       bareos_console_directors:
         - name: bareos-dir
