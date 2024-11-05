@@ -7,20 +7,18 @@ Console {
   Description = "{{ item.description }}"
 {% endif %}
   Password = "{{ item.password }}"
+  TLS Enable = {{ item.tls_enable | default(true) | ternary('Yes', 'No') }}
 {% if item.commandacl is defined %}
-  CommandACL = {{ item.commandacl | join(', ') }}
+  Command ACL = {{ item.commandacl | join(', ') }}
 {% endif %}
 {% if item.jobacl is defined %}
-  JobACL = {{ item.jobacl | join(', ') }}
+  Job ACL = {{ item.jobacl | join(', ') }}
 {% endif %}
 {% if item.profile is defined %}
   Profile = "{{ item.profile }}"
 {% endif %}
-{% if item.tlsenable is defined %}
-  TlsEnable = {{ item.tlsenable | ternary('Yes', 'No') }}
-{% endif %}
-{% if item.pamauth is defined %}
-  UsePamAuthentication = {{ item.pamauth | ternary('Yes', 'No') }}
+{% if item.use_pam_authentication is defined %}
+  UsePamAuthentication = {{ item.use_pam_authentication | ternary('Yes', 'No') }}
 {% endif %}
 }
 {% else %}
