@@ -24,6 +24,12 @@
             - .status
           jobacl:
             - "*all"
+          tls_enable: true
+        - name: pam-console
+          description: "Console uses PAM authentication"
+          password: "MySecretPAMPassword"
+          tls_enable: true
+          use_pam_authentication: true
       bareos_dir_clients:
         - name: bareos-fd
           address: 127.0.0.1
