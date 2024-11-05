@@ -79,7 +79,44 @@ argument_specs:
       bareos_dir_consoles:
         type: "list"
         default: []
-        description: "A list of consoled to configure."
+        description: "A list of consoles to configure."
+        elements: "dict"
+        options:
+          name:
+            type: "str"
+            required: true
+            description: >
+              The name of the console.
+              This name must match the name specified at the Console client.
+          description:
+            type: "str"
+          password:
+            type: "str"
+            required: true
+            description: >
+              Specifies the password that must be supplied for a named Bareos Console to be authorized.
+          commandacl:
+            type: "list"
+            elements: "str"
+          jobacl:
+            type: "list"
+            elements: "str"
+          profile:
+            type: "str"
+            description: >
+              See https://docs.bareos.org/Configuration/Director.html#directorresourceprofile
+          tls_enable:
+            type: "bool"
+            default: true
+            description: "Enable TLS support."
+          use_pam_authentication:
+            type: "bool"
+            default: false
+            description: >
+              Use PAM authentication for this console.
+              Cannot be used in combination with the option `profile` or `commandacl`!
+              See: https://github.com/bareos/bareos/tree/master/contrib/misc/bareos_pam_integration#pam-configuration
+
       bareos_dir_counters:
         type: "list"
         default: []
