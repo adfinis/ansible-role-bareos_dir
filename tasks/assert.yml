@@ -124,13 +124,19 @@
       - bareos_dir_storages is iterable
     quiet: true
 
+- name: assert | Test bareos_dir_packages
+  ansible.builtin.assert:
+    that:
+      - bareos_dir_packages is defined
+      - bareos_dir_packages is iterable
+    quiet: true
+
 - name: assert | Test bareos_dir_install_debug_packages
   ansible.builtin.assert:
     that:
       - bareos_dir_install_debug_packages is defined
       - bareos_dir_install_debug_packages is boolean
     quiet: true
-
 
 - name: assert | Test bareos_dir_catalogs
   ansible.builtin.assert:
@@ -185,3 +191,26 @@
   ansible.builtin.assert:
     that:
       - bareos_dir_messages is defined
+    quiet: true
+
+- name: assert | Test bareos_dir_pam_auth_enable
+  ansible.builtin.assert:
+    that:
+      - bareos_dir_pam_auth_enable is defined
+      - bareos_dir_pam_auth_enable is boolean
+    quiet: true
+
+- name: assert | Test bareos_dir_pam_auth_requirements
+  ansible.builtin.assert:
+    that:
+      - bareos_dir_pam_auth_requirements is defined
+      - bareos_dir_pam_auth_requirements is iterable
+    quiet: true
+
+- name: assert | Test bareos_dir_plugin_list
+  ansible.builtin.assert:
+    that:
+      - bareos_dir_plugin_list is defined
+      - bareos_dir_plugin_list is iterable
+    quiet: true
+
