@@ -288,6 +288,10 @@
         - "bareos-01@example.com"
         - "bareos-02@example.com"
 
+      bareos_dir_pam_auth_enable: true
+      bareos_dir_pam_auth_method: unix
+      bareos_dir_pam_auth_tls_enable: true
+
     - role: adfinis.bareos_console
       bareos_console_directors:
         - name: bareos-dir
