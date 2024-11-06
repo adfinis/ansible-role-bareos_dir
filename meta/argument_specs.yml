@@ -167,3 +167,40 @@ argument_specs:
         elements: "str"
         required: false
         version_added: v1.1.0
+      bareos_dir_pam_auth_enable:
+        type: "bool"
+        default: false
+        description: >
+          Setup Bareos Director to use PAM authentication via Unix socket or LDAP socket.
+          Follows the setup guide at
+          https://github.com/bareos/bareos/tree/master/contrib/misc/bareos_pam_integration#pam-configuration
+      bareos_dir_pam_auth_method:
+        type: "str"
+        default: "unix"
+        choices:
+          - "ldap"
+          - "unix"
+        description: "Decide if Unix or LDAP socket should be used for PAM authentication"
+      bareos_dir_pam_auth_profile:
+        type: "str"
+        default: "webui-admin"
+        description: "The Bareos profile to use for the user, after a successful login attempt"
+      bareos_dir_pam_auth_username:
+        type: "str"
+        default: "pam-adduser"
+        description: >
+          Technical user account for the Bareos Console connection.
+          Required to be able to add the user resources in Bareos, after a successful PAM authentication.
+      bareos_dir_pam_auth_password:
+        type: "str"
+        default: "lookup('ansible.builtin.password', '/dev/null', seed=inventory_hostname')"
+        description: >-
+          Password for technical user account for the Bareos Console connection.
+          Randomized, but idempotent password will be generated if variable is unset.
+      bareos_dir_pam_auth_tls_enable:
+        type: "bool"
+        default: false
+        description: >
+          If TLS should be used for the Bareos Console
+          WebUI does not support pre-shared keys (PSK), so if this is desired,
+          an actual CA and certificates need to be in place.
