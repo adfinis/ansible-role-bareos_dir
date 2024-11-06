@@ -65,7 +65,7 @@
         Dedicated Console for PAM authentication.
         Using this, a user who successfully authenticates against LDAP,
         will be created as Bareos user with ACLs as defined in profile {{ bareos_dir_pam_auth_profile | default('webui-admin') }}.
-      password: "{{ bareos_dir_pam_auth_password | default(  ) }}"
+      password: "{{ bareos_dir_pam_auth_password }}"
       tls_enable: "{{ bareos_dir_pam_auth_tls_enable | default(false) }}"
       commandacl:
         - ".api"

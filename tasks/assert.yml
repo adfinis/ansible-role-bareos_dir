@@ -213,4 +213,3 @@
       - bareos_dir_plugin_list is defined
       - bareos_dir_plugin_list is iterable
     quiet: true
-
