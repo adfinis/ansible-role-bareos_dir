@@ -8,3 +8,7 @@ bareos_dir_debug_packages:
   - gdb
 
 bareos_dir_plugin_dir: "/usr/lib/bareos/plugins"
+
+bareos_dir_pam_auth_requirements:
+  - libpam-modules
+  - python3-bareos

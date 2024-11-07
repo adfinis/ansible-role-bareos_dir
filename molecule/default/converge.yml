@@ -24,6 +24,12 @@
             - .status
           jobacl:
             - "*all"
+          tls_enable: true
+        - name: pam-console
+          description: "Console uses PAM authentication"
+          password: "MySecretPAMPassword"
+          tls_enable: true
+          use_pam_authentication: true
       bareos_dir_clients:
         - name: bareos-fd
           address: 127.0.0.1
@@ -281,6 +287,10 @@
       bareos_dir_tls_allowed_cns:
         - "bareos-01@example.com"
         - "bareos-02@example.com"
+
+      bareos_dir_pam_auth_enable: true
+      bareos_dir_pam_auth_method: unix
+      bareos_dir_pam_auth_tls_enable: true
 
     - role: adfinis.bareos_console
       bareos_console_directors:

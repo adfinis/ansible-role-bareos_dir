@@ -1,0 +1,78 @@
+---
+# Follows the setup process according to
+# https://github.com/bareos/bareos/tree/master/contrib/misc/bareos_pam_integration#pam-configuration
+
+- name: pam_auth | Install PAM dependencies
+  ansible.builtin.package:
+    name: "{{ bareos_dir_pam_auth_requirements }}"
+    state: present
+
+- name: pam_auth | Create bconsole password if bareos_dir_pam_auth_password unset
+  ansible.builtin.set_fact:
+    bareos_dir_pam_auth_password: "{{ lookup('ansible.builtin.password', '/dev/null', seed=inventory_hostname) }}"
+  when:
+    - bareos_dir_pam_auth_password is not defined or
+      bareos_dir_pam_auth_password == ""
+
+- name: pam_auth | Create bareos conf in /etc/pam.d/
+  ansible.builtin.template:
+    src: templates/pam.d/bareos.j2
+    dest: /etc/pam.d/bareos
+    owner: root
+    group: bareos
+    mode: "0644"
+
+# required for unix.socket auth to read /etc/shadow
+- name: pam_auth | Add bareos user to group shadow
+  ansible.builtin.user:
+    name: bareos
+    groups: shadow
+    append: true
+  when:
+    - bareos_dir_pam_auth_method == "unix"
+    - ansible_facts.os_family == "Debian"
+
+# required for unix.socket auth to read /etc/shadow
+- name: pam_auth | Change permissions for /etc/shadow
+  ansible.builtin.file:
+    path: "/etc/shadow"
+    owner: root
+    group: bareos
+    mode: "0040"
+  when:
+    - bareos_dir_pam_auth_method == "unix"
+    - ansible_facts.os_family == "RedHat"
+
+- name: pam_auth | Download pam_exec_add_bareos_user.py from bareos Github
+  ansible.builtin.get_url:
+    url: https://github.com/bareos/bareos/blob/master/contrib/misc/bareos_pam_integration/pam_exec_add_bareos_user.py
+    dest: "/usr/local/bin/pam_exec_add_bareos_user.py"
+    owner: bareos
+    group: bareos
+    mode: "0744"
+
+- name: pam_auth | Create PAM specific Bareos Console
+  ansible.builtin.template:
+    src: console.conf.j2
+    dest: "/etc/bareos/bareos-dir.d/console/{{ item.name }}.conf"
+    owner: bareos
+    group: bareos
+    mode: "0644"
+    backup: "{{ bareos_dir_backup_configurations }}"
+  loop:
+    - name: "{{ bareos_dir_pam_auth_username | default('pam-adduser') }}"
+      description: >-
+        Dedicated Console for PAM authentication.
+        Using this, a user who successfully authenticates against LDAP,
+        will be created as Bareos user with ACLs as defined in profile {{ bareos_dir_pam_auth_profile | default('webui-admin') }}.
+      password: "{{ bareos_dir_pam_auth_password }}"
+      tls_enable: "{{ bareos_dir_pam_auth_tls_enable | default(false) }}"
+      commandacl:
+        - ".api"
+        - ".profiles"
+        - ".users"
+        - "configure"
+        - "version"
+  notify:
+    - Check configuration
+    - Reload bareos-dir

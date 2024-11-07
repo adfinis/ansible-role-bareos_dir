@@ -27,3 +27,5 @@ bareos_dir_plugin_list:
   - name: director-python
     packages:
       - bareos-director-python3-plugin
+
+bareos_dir_pam_auth_requirements: []

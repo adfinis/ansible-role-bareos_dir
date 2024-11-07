@@ -1,0 +1,9 @@
+{{ ansible_managed | comment }}
+{% if bareos_dir_pam_auth_method | default("unix") == "unix" %}
+auth       required            pam_unix.so
+account    requisite           pam_unix.so
+{% elif bareos_dir_pam_auth_method == "ldap" %}
+auth       required            pam_ldap.so
+account    requisite           pam_ldap.so
+{% endif %}
+account    [default=ignore]    pam_exec.so /usr/bin/python3 /usr/local/bin/pam_exec_add_bareos_user.py --name {{ bareos_dir_pam_auth_username | default('pam-adduser') }} --password {{ bareos_dir_pam_auth_password }} --profile {{ bareos_dir_pam_auth_profile | default("webui-admin") }}

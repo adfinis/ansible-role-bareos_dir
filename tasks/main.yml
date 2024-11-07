@@ -277,6 +277,15 @@
     - bareos_dir_plugins is defined
     - bareos_dir_plugins is iterable
 
+- name: Import PAM authentication tasklist
+  ansible.builtin.import_tasks:
+    file: pam_auth.yml
+  when:
+    - bareos_dir_pam_auth_enable
+    - bareos_dir_pam_auth_method is defined
+    - bareos_dir_pam_auth_method == "ldap" or
+      bareos_dir_pam_auth_method == "unix"
+
 - name: Start bareos-dir
   ansible.builtin.service:
     name: bareos-dir

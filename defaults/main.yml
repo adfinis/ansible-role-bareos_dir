@@ -77,3 +77,6 @@ bareos_dir_schedules: []
 
 # A list of storages to configure.
 bareos_dir_storages: []
+
+# Enable PAM authentication
+bareos_dir_pam_auth_enable: false
