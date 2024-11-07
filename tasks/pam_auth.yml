@@ -54,7 +54,7 @@
 - name: pam_auth | Create PAM specific Bareos Console
   ansible.builtin.template:
     src: console.conf.j2
-    dest: "/etc/bareos/bareos-dir.d/console/pam-adduser.conf"
+    dest: "/etc/bareos/bareos-dir.d/console/{{ item.name }}.conf"
     owner: bareos
     group: bareos
     mode: "0644"
