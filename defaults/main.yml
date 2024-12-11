@@ -4,10 +4,10 @@
 # The director has these configuration parameters.
 
 # Backup the configuration files.
-bareos_dir_backup_configurations: no
+bareos_dir_backup_configurations: false
 
 # Install debug packages. This requires the debug repositories to be enabled.
-bareos_dir_install_debug_packages: no
+bareos_dir_install_debug_packages: false
 
 # The hostname of the Director.
 bareos_dir_hostname: "{{ inventory_hostname }}"

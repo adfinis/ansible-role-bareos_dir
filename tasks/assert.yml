@@ -213,3 +213,10 @@
       - bareos_dir_plugin_list is defined
       - bareos_dir_plugin_list is iterable
     quiet: true
+
+- name: assert | bareos_dir_overwrite_dir_conf
+  ansible.builtin.assert:
+    that:
+      - bareos_dir_overwrite_dir_conf is defined
+      - bareos_dir_overwrite_dir_conf is boolean
+    quiet: true

@@ -82,6 +82,8 @@
     group: bareos
     mode: "0640"
     backup: "{{ bareos_dir_backup_configurations }}"
+  when:
+    - bareos_dir_overwrite_dir_conf
   notify:
     - Check configuration
     - Reload bareos-dir
