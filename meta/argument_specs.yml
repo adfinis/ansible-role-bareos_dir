@@ -180,7 +180,8 @@ argument_specs:
         choices:
           - "ldap"
           - "unix"
-        description: "Decide if Unix or LDAP socket should be used for PAM authentication"
+          - "sss"
+        description: "Decide if Unix, SSS or LDAP socket should be used for PAM authentication"
       bareos_dir_pam_auth_profile:
         type: "str"
         default: "webui-admin"
