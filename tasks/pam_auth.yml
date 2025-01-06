@@ -43,14 +43,6 @@
     - bareos_dir_pam_auth_method == "unix"
     - ansible_facts.os_family == "RedHat"
 
-- name: pam_auth | Download pam_exec_add_bareos_user.py from bareos Github
-  ansible.builtin.get_url:
-    url: https://github.com/bareos/bareos/blob/master/contrib/misc/bareos_pam_integration/pam_exec_add_bareos_user.py
-    dest: "/usr/local/bin/pam_exec_add_bareos_user.py"
-    owner: bareos
-    group: bareos
-    mode: "0744"
-
 - name: pam_auth | Create PAM specific Bareos Console
   ansible.builtin.template:
     src: console.conf.j2
