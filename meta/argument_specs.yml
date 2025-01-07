@@ -189,7 +189,7 @@ argument_specs:
       bareos_dir_pam_auth_username:
         type: "str"
         default: "pam-adduser"
-        description: >
+        description: >-
           Technical user account for the Bareos Console connection.
           Required to be able to add the user resources in Bareos, after a successful PAM authentication.
       bareos_dir_pam_auth_password:
@@ -201,7 +201,16 @@ argument_specs:
       bareos_dir_pam_auth_tls_enable:
         type: "bool"
         default: false
-        description: >
+        description: >-
           If TLS should be used for the Bareos Console
           WebUI does not support pre-shared keys (PSK), so if this is desired,
           an actual CA and certificates need to be in place.
+      bareos_dir_overwrite_dir_conf:
+        type: "bool"
+        default: true
+        description: >-
+          This variable is used to control the behavior of applying the bareos-dir.conf template
+          in /etc/bareos/bareos-dir.d/director/bareos-dir.conf everytime.
+          The bareos_dir role is also intended to deploy the client (Filedaemon) configurations on
+          the Director. If multiple separate repositories are used then this variable can be set to false,
+          so not all repositories overwrite the "global" Director configuration.
