@@ -38,7 +38,7 @@
         - name: "disabled-client"
           enabled: false
           address: ""
-          password: ""
+          password: "disabled-password"
       bareos_dir_filesets:
         - name: LinuxAll
           description: "Backup all regular filesystems, determined by filesystem type."
