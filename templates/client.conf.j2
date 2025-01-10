@@ -1,10 +1,10 @@
 {{ ansible_managed | comment }}
 
-{% if item.enabled is defined and item.enabled or item.enabled is not defined %}
 Client {
   Name = "{{ item.name }}"
   Address = "{{ item.address }}"
   Password = "{{ item.password }}"
+  Enabled = {{ item.enabled | default(true) | ternary('Yes', 'No') }}
 {% if item.maximum_concurrent_jobs is defined %}
   Maximum Concurrent Jobs = {{ item.maximum_concurrent_jobs }}
 {% endif %}
@@ -27,6 +27,3 @@ Client {
   Enabled = {{ item.client_enabled | ternary('yes', 'no') }}
 {% endif %}
 }
-{% else %}
-# This file is not enabled.
-{% endif %}
