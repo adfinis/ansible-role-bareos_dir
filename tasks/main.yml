@@ -109,7 +109,7 @@
     dest: "/etc/bareos/bareos-dir.d/console/{{ item.name }}.conf"
     owner: bareos
     group: bareos
-    mode: "0644"
+    mode: "0640"
     backup: "{{ bareos_dir_backup_configurations }}"
   loop: "{{ bareos_dir_consoles }}"
   loop_control:
@@ -124,7 +124,7 @@
     dest: "/etc/bareos/bareos-dir.d/counter/{{ item.name }}.conf"
     owner: bareos
     group: bareos
-    mode: "0644"
+    mode: "0640"
     backup: "{{ bareos_dir_backup_configurations }}"
   loop: "{{ bareos_dir_counters }}"
   loop_control:
@@ -233,7 +233,7 @@
     dest: "/etc/bareos/bareos-dir.d/profile/{{ item.name }}.conf"
     owner: bareos
     group: bareos
-    mode: "0644"
+    mode: "0640"
     backup: "{{ bareos_dir_backup_configurations }}"
   loop: "{{ bareos_dir_profiles }}"
   loop_control:
@@ -248,7 +248,7 @@
     dest: "/etc/bareos/bareos-dir.d/schedule/{{ item.name }}.conf"
     owner: bareos
     group: bareos
-    mode: "0644"
+    mode: "0640"
     backup: "{{ bareos_dir_backup_configurations }}"
   loop: "{{ bareos_dir_schedules }}"
   loop_control:
