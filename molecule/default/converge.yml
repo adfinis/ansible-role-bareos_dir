@@ -157,6 +157,15 @@
           write_bootstrap: '|/usr/bin/bsmtp -h localhost -f \"\(Bareos\) \" -s \"Bootstrap for Job %j\" root'
           priority: 11
           maximum_concurrent_jobs: 2
+        - name: BackupMaxSettings
+          jobdefs: DefaultJob
+          level: incremental
+          max_full_interval: 5 days
+          max_diff_interval: 3 days
+          max_run_sched: 2 hours
+          max_run_time: 5 hours
+          max_wait_time: 10 hours
+
       bareos_dir_messages:
         - name: "Standard"
           description: "Send relevant messages to the Director."
