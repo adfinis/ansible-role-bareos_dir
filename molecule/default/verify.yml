@@ -3,6 +3,11 @@
   hosts: all
   become: true
   gather_facts: false
+  pre_tasks:
+    - name: Install psycopg dependency community.postgresql
+      ansible.builtin.package:
+        name: python3-psycopg2
+        state: present
 
   tasks:
     - name: Check if port 9101 is listening
