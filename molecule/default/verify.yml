@@ -1,8 +1,8 @@
 ---
 - name: Verify
   hosts: all
-  become: yes
-  gather_facts: no
+  become: true
+  gather_facts: false
 
   tasks:
     - name: Check if port 9101 is listening
@@ -34,3 +34,14 @@
       diff: true
       register: _result
       failed_when: _result.changed
+
+    - name: Verify PSQL access to Catalog database
+      community.postgresql.postgresql_info:
+        db: bareos
+        login_user: bareos
+        filter: version
+      become: true
+      become_user: bareos
+      register: _psql_result
+      failed_when:
+        - '"postgresql" not in _psql_result.version.raw | lower'
