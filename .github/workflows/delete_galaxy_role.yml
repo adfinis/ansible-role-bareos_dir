@@ -7,5 +7,5 @@ on:
 
 jobs:
   delete:
-    uses: adfinis/github-workflows-bareos/.github/workflows/ansible-galaxy-DELETE-role.yaml@v0.4.0
+    uses: adfinis/github-workflows-bareos/.github/workflows/ansible-galaxy-DELETE-role.yaml@v0.5.1
     secrets: inherit
