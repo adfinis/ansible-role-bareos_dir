@@ -162,6 +162,12 @@
 {% if item.backup_format is defined %}
   Backup Format = {{ item.backup_format }}
 {% endif %}
+{% if item.max_full_interval is defined %}
+  Max Full Interval = {{ item.max_full_interval }}
+{% endif %}
+{% if item.max_diff_interval is defined %}
+  Max Diff Interval = {{ item.max_diff_interval }}
+{% endif %}
 {% if item.max_run_sched_time is defined %}
   Max Run Sched Time = {{ item.max_run_sched_time }}
 {% endif %}
