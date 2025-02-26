@@ -11,8 +11,11 @@ Director {
 
   TLS Enable = {{ bareos_dir_tls_enable | ternary("yes","no")}}
 {% if bareos_dir_tls_ca_cert_dest is defined and
+  bareos_dir_tls_ca_cert_src != "" and
   bareos_dir_tls_cert_dest is defined and
-  bareos_dir_tls_cert_key_dest is defined
+  bareos_dir_tls_cert_src != "" and
+  bareos_dir_tls_cert_key_dest is defined and
+  bareos_dir_tls_cert_key_src != ""
 %}
   TLS CA Certificate File = {{ bareos_dir_tls_ca_cert_dest }}
   TLS Certificate = {{ bareos_dir_tls_cert_dest }}
