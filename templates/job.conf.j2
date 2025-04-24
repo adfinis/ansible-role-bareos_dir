@@ -66,6 +66,12 @@
 {% if item.runafterjob is defined %}
   Run After Job = "{{ item.runafterjob }}"
 {% endif %}
+{% if item.client_runbeforejob is defined %}
+  Client Run Before Job = "{{ item.client_runbeforejob }}"
+{% endif %}
+{% if item.client_runafterjob is defined %}
+  Client Run After Job = "{{ item.client_runafterjob }}"
+{% endif %}
 {% if item.where is defined %}
   Where = "{{ item.where }}"
 {% endif %}
