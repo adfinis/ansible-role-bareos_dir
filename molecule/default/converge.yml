@@ -111,6 +111,7 @@
                            ":wal_archive_dir=/var/lib/pgsql/wal_archive/"
         - name: disabled-fileset
           enabled: false
+
       bareos_dir_jobdefs:
         - name: DefaultJob-1
           type: Backup
@@ -125,6 +126,7 @@
           full_backup_pool: Full
           differential_backup_pool: Differential
           incremental_backup_pool: Incremental
+
         - name: DefaultJob-Plugin
           type: Backup
           plugin_options: |+
@@ -132,8 +134,16 @@
                                   ":instance=0"
                                   ":module_name=bareos-dir-class-plugins"
                                   ":testoption=testparam"
+
         - name: disabled-jobdef
           enabled: false
+
+        - name: RunBeforeClientJob
+          type: Backup
+          level: full
+          fileset: LinuxAll
+          client_runbeforejob: "/usr/bin/echo this is a test"
+
       bareos_dir_jobs:
         - name: my_job
           description: "My backup job"
