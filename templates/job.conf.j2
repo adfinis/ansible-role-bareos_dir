@@ -129,12 +129,6 @@
   }
 {% endif %}
 
-{% if item.run_before_job is defined %}
-  RunBeforeJob = {{ item.run_before_job }}
-{% endif %}
-{% if item.run_after_job is defined %}
-  RunAfterJob = {{ item.run_after_job }}
-{% endif %}
 {% if item.spool_data is defined %}
   Spool Data = {{ item.spool_data | ternary('yes', 'no') }}
 {% endif %}
