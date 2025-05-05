@@ -1,5 +1,4 @@
 ---
-
 argument_specs:
   main:
     short_description: "Install and configure BareOS Director on your system."
@@ -214,3 +213,9 @@ argument_specs:
           The bareos_dir role is also intended to deploy the client (Filedaemon) configurations on
           the Director. If multiple separate repositories are used then this variable can be set to false,
           so not all repositories overwrite the "global" Director configuration.
+      bareos_dir_heartbeat_interval:
+        type: "int"
+        default: 0
+        description: >-
+          Configure a keepalive interval (heartbeat) on the sockets used by the Bareos Director in seconds.
+          0 disables it.

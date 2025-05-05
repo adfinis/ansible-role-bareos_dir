@@ -84,3 +84,6 @@ bareos_dir_pam_auth_enable: false
 # Overwrite Director config
 # /etc/bareos/bareos-dir.d/director/bareos-dir.conf
 bareos_dir_overwrite_dir_conf: true
+
+# Configure a TCP keepalive heartbeat interval.
+bareos_dir_heartbeat_interval: 0

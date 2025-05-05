@@ -1,5 +1,4 @@
 ---
-
 - name: assert | Test bareos_dir_backup_configurations
   ansible.builtin.assert:
     that:
@@ -219,4 +218,11 @@
     that:
       - bareos_dir_overwrite_dir_conf is defined
       - bareos_dir_overwrite_dir_conf is boolean
+    quiet: true
+
+- name: assert | Test bareos_dir_heartbeat_interval
+  ansible.builtin.assert:
+    that:
+      - bareos_dir_heartbeat_interval is defined
+      - bareos_dir_heartbeat_interval is number
     quiet: true

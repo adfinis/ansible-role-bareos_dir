@@ -313,6 +313,8 @@
       bareos_dir_pam_auth_method: unix
       bareos_dir_pam_auth_tls_enable: true
 
+      bareos_dir_heartbeat_interval: 60
+
     - role: adfinis.bareos_console
       bareos_console_directors:
         - name: bareos-dir
