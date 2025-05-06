@@ -26,4 +26,7 @@ Client {
 {% if item.client_enabled is defined %}
   Enabled = {{ item.client_enabled | ternary('yes', 'no') }}
 {% endif %}
+{% if item.heartbeat_interval is defined %}
+  Heartbeat Interval = {{ item.heartbeat_interval }}
+{% endif %}
 }

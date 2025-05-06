@@ -25,6 +25,9 @@ Storage {
 {% if item.autochanger is defined %}
   Auto Changer = {{ item.autochanger | ternary('Yes', 'No') }}
 {% endif %}
+{% if item.heartbeat_interval is defined %}
+  Heartbeat Interval = {{ item.heartbeat_interval }}
+{% endif %}
 }
 {% else %}
 # This file is not enabled.
