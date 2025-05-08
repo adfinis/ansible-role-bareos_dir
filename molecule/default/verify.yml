@@ -1,4 +1,5 @@
 ---
+
 - name: Verify
   hosts: all
   become: true
@@ -42,7 +43,7 @@
 
     - name: Verify PSQL access to Catalog database
       community.postgresql.postgresql_info:
-        db: bareos
+        login_db: bareos
         login_user: bareos
         filter: version
       become: true
