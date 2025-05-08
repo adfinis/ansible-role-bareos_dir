@@ -17,3 +17,4 @@ roles:
 collections:
   - name: community.general
   - name: community.postgresql
+    version: "<4.0.0"  # version 4.0.0 of this collection will break at least the molecule tests
