@@ -1,4 +1,5 @@
 ---
+
 argument_specs:
   main:
     short_description: "Install and configure BareOS Director on your system."
