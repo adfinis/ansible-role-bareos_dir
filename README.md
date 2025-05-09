@@ -359,6 +359,9 @@ bareos_dir_schedules: []
 
 # A list of storages to configure.
 bareos_dir_storages: []
+
+# Configure a TCP keepalive heartbeat interval.
+bareos_dir_heartbeat_interval: 0
 ```
 
 ## [Context](#context)
