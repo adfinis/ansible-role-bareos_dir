@@ -236,6 +236,7 @@
           volume_retention: 365 days
           maximum_volume_bytes: 50G
           maximum_volumes: 100
+          maximum_volume_jobs: 1  # only use a volume once
           label_format: "Full-"
         - name: "disabled-pool"
           enabled: false
