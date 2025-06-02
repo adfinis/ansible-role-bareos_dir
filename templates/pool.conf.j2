@@ -37,6 +37,9 @@ Pool {
 {% if item.maximum_volumes is defined %}
   Maximum Volumes = {{ item.maximum_volumes }}
 {% endif %}
+{% if item.maximum_volume_jobs is defined %}
+  Maximum Volume Jobs = {{ item.maximum_volume_jobs }}
+{% endif %}
 {% if item.label_format is defined %}
   Label Format = "{{ item.label_format }}"
 {% endif %}
