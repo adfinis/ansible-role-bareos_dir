@@ -13,6 +13,8 @@
   when:
     - bareos_dir_pam_auth_password is not defined or
       bareos_dir_pam_auth_password == ""
+  tags:
+    - skip_ansible_lint  # ansible-lint failes at seed=inventory_hostname
 
 - name: pam_auth | Create bareos conf in /etc/pam.d/
   ansible.builtin.template:
