@@ -69,6 +69,7 @@
               - /var/tmp
               - /.journal
               - /.fsck
+          ignore_file_set_changes: true
         - name: FileSet_MariaDB
           description: >-
             Backup the MariaDB databases with mariabackup.
@@ -82,6 +83,7 @@
               "python3"
                            ":module_name=bareos-fd-mariabackup"
                            ":mycnf=/root/.my.cnf"
+          ignore_file_set_changes: false
         - name: FileSet_Mysqldump
           description: >-
             Backup MySQL databases with mysqldump.
