@@ -19,7 +19,7 @@ FileSet {
       Compression = {{ item.include.options.compression }}
 {% endif %}
 {% if item.include.options.no_atime is defined %}
-      No Atime = {{ item.include.options.no_atime | ternary('yes', 'no') }}
+      No Atime = {{ item.include.options.no_atime | ternary('Yes', 'No') }}
 {% endif %}
 {% if item.include.options.wilds is defined %}
 {% for wild in item.include.options.wilds %}
@@ -52,7 +52,7 @@ FileSet {
 {% endfor %}
 {% endif %}
 {% if item.include.options.exclude is defined %}
-      Exclude = {{ item.include.options.exclude | ternary('yes', 'no') }}
+      Exclude = {{ item.include.options.exclude | ternary('Yes', 'No') }}
 {% endif %}
     }
 {% if item.include.plugin is defined %}
@@ -72,6 +72,9 @@ FileSet {
     File = {{ file }}
 {% endfor %}
   }
+{% endif %}
+{% if item.ignore_file_set_changes is defined %}
+  Ignore File Set Changes = {{ item.ignore_file_set_changes | ternary('Yes', 'No') }}
 {% endif %}
 }
 {% else %}
