@@ -9,7 +9,7 @@
 
 - name: pam_auth | Create bconsole password if bareos_dir_pam_auth_password unset
   ansible.builtin.set_fact:
-    bareos_dir_pam_auth_password: "{{ lookup('ansible.builtin.password', '/dev/null', seed=inventory_hostname) }}"
+    bareos_dir_pam_auth_password: "{{ lookup('ansible.builtin.password', '/dev/null', seed=inventory_hostname, chars=['ascii_letters', 'digits']) }}"
   when:
     - bareos_dir_pam_auth_password is not defined or
       bareos_dir_pam_auth_password == ""
