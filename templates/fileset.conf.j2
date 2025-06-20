@@ -54,6 +54,9 @@ FileSet {
 {% if item.include.options.exclude is defined %}
       Exclude = {{ item.include.options.exclude | ternary('Yes', 'No') }}
 {% endif %}
+{% if item.include.options.hard_links is defined %}
+    Hard Links = {{ item.include.options.hard_links | ternary('Yes', 'No') }}
+{% endif %}
     }
 {% if item.include.plugin is defined %}
     Plugin = {{ item.include.plugin }}
