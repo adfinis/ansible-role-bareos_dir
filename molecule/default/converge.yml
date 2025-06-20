@@ -60,6 +60,7 @@
                 - xfs
                 - zfs
               compression: GZIP
+              hard_links: true
           exclude:
             files:
               - /var/lib/bareos
@@ -79,6 +80,7 @@
             options:
               signature: MD5
               compression: GZIP
+              hard_links: false
             plugin: |+
               "python3"
                            ":module_name=bareos-fd-mariabackup"
