@@ -12,7 +12,7 @@ on:
 
 jobs:
   test:
-    uses: adfinis/github-workflows-bareos/.github/workflows/molecule.yaml@fix/molecule_worklfow
+    uses: adfinis/github-workflows-bareos/.github/workflows/molecule.yaml@440c9ff2983fc14be837ef21acbe03f39a2968ac
     with:
       systems: |
         {
