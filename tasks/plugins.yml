@@ -2,7 +2,7 @@
 
 - name: plugins | Get data
   ansible.builtin.set_fact:
-    _plugin_data: {{ _plugin_data + (bareos_dir_plugin_list | selectattr('name', 'equalto', item) | list) }}"  # noqa: jinja[invalid] yaml[line-length]
+    _plugin_data: {{ _plugin_data + (bareos_dir_plugin_list | selectattr('name', 'equalto', item) | list) }}"  # noqa: jinja[invalid] yaml[line-length] yaml[load-failure]
   loop: "{{ bareos_dir_plugins }}"
   vars:
     _plugin_data: []  # empty list to append to
