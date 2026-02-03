@@ -12,38 +12,4 @@ on:
 
 jobs:
   test:
-    uses: adfinis/github-workflows-bareos/.github/workflows/molecule.yaml@v0.5.2
-    with:
-      systems: |
-        {
-          "config": [
-            {
-              "image": "debian",
-              "tag": "latest"
-            },
-            {
-              "image": "debian",
-              "tag": "bullseye"
-            },
-            {
-              "image": "enterpriselinux",
-              "tag": "latest"
-            },
-            {
-              "image": "fedora",
-              "tag": "40"
-            },
-            {
-              "image": "fedora",
-              "tag": "latest"
-            },
-            {
-              "image": "ubuntu",
-              "tag": "jammy"
-            },
-            {
-              "image": "ubuntu",
-              "tag": "latest"
-            }
-          ]
-        }
+    uses: adfinis/github-workflows-bareos/.github/workflows/molecule.yaml@v0.8.0
