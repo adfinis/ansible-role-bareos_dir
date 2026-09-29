@@ -133,7 +133,7 @@
 
         - name: DefaultJob-Plugin
           type: Backup
-          plugin_options: |+
+          dir_plugin_options: |+
             "python3"
                                   ":instance=0"
                                   ":module_name=bareos-dir-class-plugins"
@@ -149,6 +149,17 @@
           client_runbeforejob: "/usr/bin/echo this is a test"
 
       bareos_dir_jobs:
+        - name: proxmox_vmid-100
+          description: "Backup a VM via Proxmox job"
+          pool: Full
+          type: Backup
+          client: bareos-fd
+          storage: File-1
+          messages: Standard
+          fd_plugin_options: |+
+            "python3"
+                     ":vmid=100"
+                     ":module_name=bareos-fd-proxmox"
         - name: my_job
           description: "My backup job"
           pool: Full
