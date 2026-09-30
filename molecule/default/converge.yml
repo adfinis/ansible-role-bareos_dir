@@ -121,8 +121,8 @@
           include:
             files: []
             options:
-              signature: "{{ fileset_signature }}"
-              compression: "{{ fileset_compression }}"
+              signature: XXH128
+              compression: LZ4
             plugin: |+
               "python3"
                       ":module_name=bareos-fd-proxmox"
