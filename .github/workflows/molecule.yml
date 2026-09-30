@@ -20,7 +20,7 @@ jobs:
           "debian12",
           "fedora43",
           "fedora44",
-          "ubuntu2604"
+          "ubuntu2604",
           "ubuntu2404",
           "ubuntu2204"
         ]
