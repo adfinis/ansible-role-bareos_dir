@@ -12,14 +12,15 @@ on:
 
 jobs:
   test:
-    uses: adfinis/github-workflows-bareos/.github/workflows/molecule.yaml@eedff15b52be3c117bd5f7a28492494596399311 # v0.8.0
+    uses: adfinis/github-workflows-bareos/.github/workflows/molecule.yaml@7b2184d76870cc7c281d081a6ebabc15264dcc1f  # v0.10.0
     with:
       distros: |
         [
           "debian13",
           "debian12",
-          "debian11",
-          "fedora42",
+          "fedora43",
+          "fedora44",
+          "ubuntu2604",
           "ubuntu2404",
           "ubuntu2204"
         ]

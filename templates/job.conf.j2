@@ -78,8 +78,11 @@
 {% if item.maximum_concurrent_jobs is defined %}
   Maximum Concurrent Jobs = {{ item.maximum_concurrent_jobs }}
 {% endif %}
-{% if item.plugin_options is defined %}
-  Dir Plugin Options = {{ item.plugin_options }}
+{% if item.dir_plugin_options is defined %}
+  Dir Plugin Options = {{ item.dir_plugin_options }}
+{% endif %}
+{% if item.fd_plugin_options is defined %}
+  FD Plugin Options = {{ item.fd_plugin_options }}
 {% endif %}
 {% if item.max_concurrent_copies is defined %}
   Max Concurrent Copies = {{ item.max_concurrent_copies }}

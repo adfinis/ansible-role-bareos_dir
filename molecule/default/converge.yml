@@ -113,6 +113,20 @@
                            ":module_name=bareos-fd-postgresql"
                            ":db_host=/run/postgresql/"
                            ":wal_archive_dir=/var/lib/pgsql/wal_archive/"
+        - name: FileSet_ProxmoxVM
+          description: >-
+            Backup a VM via Proxmox plugin. Takes a dump of a VM snapshot.
+            See:
+            https://docs.bareos.org/TasksAndConcepts/Plugins.html#proxmox-plugin
+          include:
+            files: []
+            options:
+              signature: XXH128
+              compression: LZ4
+            plugin: |+
+              "python3"
+                      ":module_name=bareos-fd-proxmox"
+                      ":restoretodisk=yes"
         - name: disabled-fileset
           enabled: false
 
@@ -133,7 +147,7 @@
 
         - name: DefaultJob-Plugin
           type: Backup
-          plugin_options: |+
+          dir_plugin_options: |+
             "python3"
                                   ":instance=0"
                                   ":module_name=bareos-dir-class-plugins"
@@ -149,6 +163,18 @@
           client_runbeforejob: "/usr/bin/echo this is a test"
 
       bareos_dir_jobs:
+        - name: proxmox_vmid-100
+          description: "Backup a VM via Proxmox job"
+          pool: Full
+          type: Backup
+          client: bareos-fd
+          fileset: FileSet_ProxmoxVM
+          storage: File-1
+          messages: Standard
+          fd_plugin_options: |+
+            "python3"
+                     ":module_name=bareos-fd-proxmox"
+                     ":vmid=100"
         - name: my_job
           description: "My backup job"
           pool: Full
